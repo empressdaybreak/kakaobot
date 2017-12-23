@@ -34,7 +34,6 @@ def get_reply(content):
         return make_response("오늘 메뉴는 '%s' 어떠신가요?" %decide_menu())
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
-    elif ''
     else:
         return make_response("무슨 말인지 모르겠어!")
 
