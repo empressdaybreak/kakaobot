@@ -10,7 +10,7 @@ def keyboard():
     })
 
 @app.route('/message', methods=['POST'])
-def message();
+def message():
     return jsonify({
         'message' : {
             'text' : '안녕하세요! 아직은 개발 중이라 이 말밖에 못 해요!'
