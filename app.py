@@ -1,6 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request 
 
 app = Flask(__name__)
+
+reply_list = ['밥', '면']
 
 @app.route('/keyboard')
 def keyboard():
@@ -29,6 +31,8 @@ def get_reply(content):
         return make_response("안녕!")
     elif '사기리' in content:
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
+    elif '메뉴' in content:
+        return make_response("%s" %reply_list[random.randrange(0, len(reply_list) - 1)])
     else:
         return make_response("무슨 말인지 모르겠어!")
 
