@@ -34,8 +34,6 @@ def get_reply(content):
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     elif '메뉴' in content:
         return make_response("오늘 메뉴는 '%s' 어떠신가요?" %decide_menu())
-    elif '섹스' in content:
-        return make_response("뒤진다 진짜 ㅡㅡ")
     else:
         return make_response("무슨 말인지 모르겠어!")
 
