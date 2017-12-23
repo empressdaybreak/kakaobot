@@ -33,7 +33,7 @@ def get_reply(content):
     elif '사기리' in content:
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     elif '메뉴' in content:
-        make_response(reply_list[random.randrange(0, len(reply_list) - 1)])
+        return make_response(reply_list[random.randrange(0, len(reply_list) - 1)])
     else:
         return make_response("무슨 말인지 모르겠어!")
 
