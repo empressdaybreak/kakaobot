@@ -19,8 +19,12 @@ def process_message():
         })
     else:
         content = message['content']
+        if '안녕' in content:
+            response = "안녕하세요!"
+        else:
+            response = "무슨 말인지 잘 모르겠어요.."
         return jsonify({
             'message' : {
-                'text' : content
+                'text' : response
             }
         })
