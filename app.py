@@ -19,6 +19,7 @@ def process_message():
         })
     else:
         content = message['content']
+        print('메시지 도착: %s' % content)
     
         return jsonify(get_reply(content))
         
