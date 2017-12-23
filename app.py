@@ -40,7 +40,7 @@ def make_response(text, image = None):
     }
 
     if image:
-        response['message']['image'] = {
+        response['message']['photo'] = {
             'url' : image,
             'width' : 100,
             'height' : 100
