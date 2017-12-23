@@ -33,7 +33,7 @@ def get_reply(content):
     elif '사기리' in content:
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     elif '메뉴' in content:
-        return make_response(decide_menu())
+        return make_response("오늘 메뉴는 %s가 어떠신가요?" %decide_menu())
     else:
         return make_response("무슨 말인지 모르겠어!")
 
@@ -55,5 +55,5 @@ def make_response(text, image = None, width = 0, height = 0):
     return response
 
 def decide_menu():
-    reply_list = ['밥', '면']
+    reply_list = ['피자', '치킨']
     return reply_list[random.randrange(0, len(reply_list))]
