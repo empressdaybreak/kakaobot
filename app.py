@@ -56,4 +56,4 @@ def make_response(text, image = None, width = 0, height = 0):
 
 def decide_menu():
     reply_list = ['밥', '면']
-    make_response(reply_list[random.randrange(0, len(reply_list))])
+    return reply_list[random.randrange(0, len(reply_list))]
