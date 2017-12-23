@@ -20,14 +20,30 @@ def process_message():
     else:
         content = message['content']
     
-        return jsonify({
-            'message' : {
-                'text' : get_reply(content)
-            }
-        })
+        return jsonify(get_reply(content))
+        
 
 def get_reply(content):
     if '안녕' in content:
-            return "안녕하세요!"
-        else:
-            return "무슨 말인지 잘 모르겠어요.."
+        return make_response("안녕!")
+    elif '사기리' in content:
+        return make_response("사기리", "http://daybreak.fun/sagiri.jpg")
+    else:
+        return make_response("무슨 말인지 모르겠어!")
+
+def make_response(text, image = None):
+
+    response = {
+        'message' : {
+            'text' : text
+        }
+    }
+
+    if image:
+        response['message']['image'] = {
+            'url' : image,
+            'width' : 100,
+            'height' : 100
+        }
+
+    return response
