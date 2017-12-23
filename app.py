@@ -27,11 +27,11 @@ def get_reply(content):
     if '안녕' in content:
         return make_response("안녕!")
     elif '사기리' in content:
-        return make_response("사기리", "http://daybreak.fun/sagiri.jpg")
+        return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     else:
         return make_response("무슨 말인지 모르겠어!")
 
-def make_response(text, image = None):
+def make_response(text, image = None, width = 0, height = 0):
 
     response = {
         'message' : {
@@ -42,8 +42,8 @@ def make_response(text, image = None):
     if image:
         response['message']['photo'] = {
             'url' : image,
-            'width' : 100,
-            'height' : 100
+            'width' : width,
+            'height' : height
         }
 
     return response
