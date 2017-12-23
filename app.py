@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -10,9 +10,18 @@ def keyboard():
     })
 
 @app.route('/message', methods=['POST'])
-def message():
-    return jsonify({
-        'message' : {
-            'text' : '안녕하세요! 아직은 개발 중이라 이 말밖에 못 해요!'
-        }
-    })
+def process_message():
+    message = request.json
+    if message['type'] == 'photo':
+        return jsonify({
+            'message' : {
+                'text' : '죄송합니다! 무슨 사진인지 잘 모르겠어요..'
+            }
+        })
+    else:
+        content = message['content']
+        return jsonify({
+            'message' : {
+                'text' : content
+            }
+        })
