@@ -8,9 +8,6 @@ def keyboard():
     return jsonify({
         "type" : "text"
     })
-    return jsonify({
-        "type" : "buttons"
-    })
 
 @app.route('/message', methods=['POST'])
 def process_message():
@@ -38,11 +35,11 @@ def get_reply(content):
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif '버튼' in content:
-        return make_buttons()
+        return make_response('버튼을 선택해 주세요', buttons = ['버튼 1', '버튼 2', '버튼 3'])
     else:
         return make_response("무슨 말인지 모르겠어!")
 
-def make_response(text, image = None, width = 0, height = 0):
+def make_response(text, image = None, width = 0, height = 0, buttons = None):
 
     response = {
         'message' : {
@@ -56,16 +53,15 @@ def make_response(text, image = None, width = 0, height = 0):
             'width' : width,
             'height' : height
         }
+    
+    if buttons:
+        response['keyboard'] = {
+            'type': 'buttons',
+            'buttons': buttons
+        }
 
     return response
 
 def decide_menu():
     reply_list = ['피자', '치킨', '짜장면', '라면', '초밥', '김치찌개']
     return reply_list[random.randrange(0, len(reply_list))]
-
-def make_buttons():
-    return{
-
-        "type": "buttons",
-        "buttons": ["선택 1","선택 2","선택 3"]
-}
