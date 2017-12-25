@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request 
 import random
 
+import naver
+
 app = Flask(__name__)
 
 @app.route('/keyboard')
@@ -31,7 +33,7 @@ def get_reply(content):
     elif '사기리' in content:
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     elif '메뉴' in content:
-        return make_response("오늘 메뉴는 '%s' 어떠신가요?" %decide_menu())
+        return decide_menu()
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif content == '버튼':
@@ -71,4 +73,8 @@ def make_response(text, image = None, width = 0, height = 0, buttons = None):
 
 def decide_menu():
     reply_list = ['피자', '치킨', '짜장면', '라면', '초밥', '김치찌개']
-    return reply_list[random.randrange(0, len(reply_list))]
+    menu = reply_list[random.randrange(0, len(reply_list))]
+    search_result = naver.search(menu)
+    
+    image = search_result['items'][0]
+    return make_response("오늘 메뉴는 '%s' 어떠신가요?" %menu, image['link'], image['sizewidth'], image['sizeheight'])
