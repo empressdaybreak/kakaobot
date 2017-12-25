@@ -35,8 +35,7 @@ def get_reply(content):
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif '버튼' in content:
-        return "type" : "buttons",
-            "buttons" : ["선택1", "선택2", "선택3"]
+        return make_buttons()
     else:
         return make_response("무슨 말인지 모르겠어!")
 
@@ -60,3 +59,8 @@ def make_response(text, image = None, width = 0, height = 0):
 def decide_menu():
     reply_list = ['피자', '치킨', '짜장면', '라면', '초밥', '김치찌개']
     return reply_list[random.randrange(0, len(reply_list))]
+
+def make_buttons():
+    type: "buttons"
+    buttons: ["선택 1", "선택 2", "선택 3"]
+    
