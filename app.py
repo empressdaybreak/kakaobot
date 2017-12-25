@@ -77,4 +77,4 @@ def decide_menu():
     search_result = naver.search(menu)
     
     image = search_result['items'][0]
-    return make_response("오늘 메뉴는 '%s' 어떠신가요?" %menu, image['link'], image['sizewidth'], image['sizeheight'])
+    return make_response("오늘 메뉴는 '%s' 어떠신가요?" %menu, image['link'], int(image['sizewidth']), int(image['sizeheight']))
