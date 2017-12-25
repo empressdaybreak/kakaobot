@@ -35,7 +35,7 @@ def get_reply(content):
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif '버튼' in content:
-        return "type" = "buttons",
+        return "type" : "buttons",
             "buttons" : ["선택1", "선택2", "선택3"]
     else:
         return make_response("무슨 말인지 모르겠어!")
