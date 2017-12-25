@@ -15,4 +15,8 @@ def search(keyword):
         "X-Naver-Client-Secret" : config.CLIENT_SECRET
     })
     
+    if response.code is not 200:
+        raise Exception("요청에 실패 하였습니다.")
+    
+
     return response.json()

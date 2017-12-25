@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/keyboard')
 def keyboard():
-    return jsonify({
+    return jsonify({ 
         "type" : "text"
     })
 
@@ -23,8 +23,12 @@ def process_message():
     else:
         content = message['content']
         print('메시지 도착: %s' % content)
-    
-        return jsonify(get_reply(content))
+        try:
+            return jsonify(get_reply(content))
+        except Exception as e:
+            return jsonify(
+                make_response('오류가 발생했습니다: %s' % str(e))
+            )
         
 
 def get_reply(content):
