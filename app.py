@@ -6,7 +6,9 @@ app = Flask(__name__)
 @app.route('/keyboard')
 def keyboard():
     return jsonify({
-        "type" : "text",
+        "type" : "text"
+    })
+    return jsonify({
         "type" : "buttons"
     })
 
@@ -62,5 +64,8 @@ def decide_menu():
     return reply_list[random.randrange(0, len(reply_list))]
 
 def make_buttons():
-    buttons: ["선택 1", "선택 2", "선택 3"]
-    
+    return{
+
+        "type": "buttons",
+        "buttons": ["선택 1","선택 2","선택 3"]
+}
