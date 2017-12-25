@@ -40,6 +40,8 @@ def get_reply(content):
         return decide_menu()
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
+    elif '도움말' in content:
+        return make_response("아래에 있는 단어가 포함되도록 입력해주세요.\n안녕\n사기리\n메뉴\n새벽\n버튼")
     elif content == '버튼':
         return make_response('버튼을 선택해 주세요', buttons = ['버튼 1', '버튼 2', '취소'])
     elif content == '버튼 1':
@@ -50,7 +52,7 @@ def get_reply(content):
         return make_response('취소 했습니다.')
     
     else:
-        return make_response("무슨 말인지 모르겠어!")
+        return make_response("무슨 말인지 모르겠어요! 대화를 하고 싶다면 '도와줘' 라고 입력해주세요!")
 
 def make_response(text, image = None, width = 0, height = 0, buttons = None):
 
