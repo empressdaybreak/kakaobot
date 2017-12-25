@@ -6,7 +6,8 @@ app = Flask(__name__)
 @app.route('/keyboard')
 def keyboard():
     return jsonify({
-        "type" : "text"
+        "type" : "text",
+        "type" : "buttons"
     })
 
 @app.route('/message', methods=['POST'])
