@@ -62,6 +62,5 @@ def decide_menu():
     return reply_list[random.randrange(0, len(reply_list))]
 
 def make_buttons():
-    type: "buttons"
     buttons: ["선택 1", "선택 2", "선택 3"]
     
