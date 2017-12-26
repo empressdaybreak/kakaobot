@@ -88,8 +88,10 @@ def decide_menu():
     return make_response("오늘 메뉴는 '%s' 어떠신가요?" %menu, image['link'], int(image['sizewidth']), int(image['sizeheight']))
 
 def decide_search(content):
-    search_result = naver.search(menu)
+    keyword = content.split('검색: ')[1]
+    search_result = naver.search(keyword)
 
     image = search_result['items'][random.randrange(0, len(search_result['items']))]
     return make_response("검색 결과 입니다. '%s'" %content, image['link'], int(image['sizewidth']), int(image['sizeheight']))
 
+    
