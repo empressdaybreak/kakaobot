@@ -92,6 +92,6 @@ def decide_search(content):
     search_result = naver.search(keyword)
 
     image = search_result['items'][random.randrange(0, len(search_result['items']))]
-    return make_response("검색 결과 입니다. '%s'" %content, image['link'], int(image['sizewidth']), int(image['sizeheight']))
+    return make_response("검색 결과 입니다. '%s'" %keyword, image['link'], int(image['sizewidth']), int(image['sizeheight']))
 
     
