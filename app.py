@@ -39,7 +39,7 @@ def get_reply(content):
     elif '메뉴' in content:
         return decide_menu()
     elif content.startswith('검색:'):
-        return decide_search()
+        return decide_search(content)
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif '도와줘' in content:
