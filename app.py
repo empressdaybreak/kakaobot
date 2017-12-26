@@ -38,12 +38,12 @@ def get_reply(content):
         return make_response("사기리", "http://daybreak.fun/sagiri.jpg", 720, 1017)
     elif '메뉴' in content:
         return decide_menu()
-    elif '검색' in content:
+    elif content.startswith('검색:'):
         return decide_search()
     elif '누구' in content or '새벽' in content:
         return make_response("저에 대해 알고 싶으시다면 http://daybreak.fun/ 으로 와주세요!")
     elif '도와줘' in content:
-        return make_response("아래에 있는 단어가 포함되도록 입력해주세요.\n'안녕'/'사기리'/'메뉴'/'새벽'/'버튼'")
+        return make_response("아래에 있는 단어가 포함되도록 입력해주세요.\n'안녕'/'사기리'/'메뉴'/'새벽'/'버튼'/'뭐하지'")
     elif content == '뭐하지':
         return make_response('버튼을 선택해 주세요', buttons = ['만화', '애니메이션', '취소'])
     elif content == '만화':
@@ -87,9 +87,9 @@ def decide_menu():
     image = search_result['items'][random.randrange(0, len(search_result['items']))]
     return make_response("오늘 메뉴는 '%s' 어떠신가요?" %menu, image['link'], int(image['sizewidth']), int(image['sizeheight']))
 
-def decide_search():
-    content = ['message']
+def decide_search(content):
     search_result = naver.search(menu)
 
     image = search_result['items'][random.randrange(0, len(search_result['items']))]
     return make_response("검색 결과 입니다. '%s'" %content, image['link'], int(image['sizewidth']), int(image['sizeheight']))
+
